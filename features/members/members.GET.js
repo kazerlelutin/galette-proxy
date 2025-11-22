@@ -20,7 +20,6 @@ module.exports = async (r, h) => {
       const children = await knex('galette_adherents')
         .where('galette_adherents.parent_id', member.id_adh)
         .select('galette_adherents.*')
-        .first();
 
       if (children) {
         delete children.mdp_adh;
