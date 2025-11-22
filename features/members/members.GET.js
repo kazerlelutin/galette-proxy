@@ -10,7 +10,7 @@ module.exports = async (r, h) => {
       const member = await knex('galette_adherents')
         .join('galette_statuts', 'galette_adherents.id_statut', 'galette_statuts.id_statut')
         .whereIn('galette_adherents.id_statut', activeStatuts)
-        .where('galette_adherents.email', email)
+        .where('galette_adherents.email_adh', email)
         .select('galette_adherents.*', 'galette_statuts.libelle_statut as statut_nom')
         .first();
       return h.response(member);
