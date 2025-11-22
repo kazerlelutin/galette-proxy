@@ -24,8 +24,6 @@ module.exports = async (r, h) => {
       })
       .select('galette_adherents.*', 'galette_statuts.libelle_statut as statut_nom')
       .orderBy('galette_adherents.date_echeance', 'asc');
-
-    console.log(members.length);
     return h.response(members);
   } catch (error) {
     return h.response({ error }).code(500);
